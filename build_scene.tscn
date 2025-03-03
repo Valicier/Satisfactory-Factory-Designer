@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqu57n12orkoe"]
+
+[ext_resource type="Texture2D" uid="uid://bgd0whvexftxb" path="res://Foundation.png" id="1_ejyry"]
+[ext_resource type="PackedScene" uid="uid://1xjmr32kaq7l" path="res://Buildings/constructor.tscn" id="1_j3430"]
+[ext_resource type="PackedScene" uid="uid://ckcx6w8xkxfjo" path="res://interface.tscn" id="1_w40l2"]
+[ext_resource type="PackedScene" uid="uid://b04d2jdwpa1fb" path="res://Buildings/smelter.tscn" id="2_rp3sh"]
+[ext_resource type="PackedScene" uid="uid://cojegl4yo3xa7" path="res://Buildings/miner.tscn" id="4_fxr7e"]
+[ext_resource type="PackedScene" uid="uid://crfjawdbijquw" path="res://Buildings/splitter.tscn" id="5_ukrsa"]
+
+[node name="Build Scene" type="Node2D"]
+
+[node name="Grid" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("1_ejyry")
+region_enabled = true
+region_rect = Rect2(0, 0, 5000, 5000)
+
+[node name="Interface" parent="." instance=ExtResource("1_w40l2")]
+
+[node name="Constructor" parent="." instance=ExtResource("1_j3430")]
+position = Vector2(660, 330)
+
+[node name="Constructor2" parent="." instance=ExtResource("1_j3430")]
+position = Vector2(785, 267)
+
+[node name="Smelter" parent="." instance=ExtResource("2_rp3sh")]
+position = Vector2(430, 250)
+
+[node name="Smelter2" parent="." instance=ExtResource("2_rp3sh")]
+position = Vector2(218, 189)
+
+[node name="Miner" parent="." instance=ExtResource("4_fxr7e")]
+position = Vector2(322, 346)
+
+[node name="Splitter" parent="." instance=ExtResource("5_ukrsa")]
+position = Vector2(447, 387)

@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://baqogkybg804m"]
+
+[ext_resource type="Texture2D" uid="uid://cf6f4leqq8mt1" path="res://icon.svg" id="1_jyegd"]
+[ext_resource type="Script" path="res://snap_script.gd" id="2_706wc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_giqqo"]
+
+[node name="Test Object" type="Sprite2D"]
+position = Vector2(576, 324)
+texture = ExtResource("1_jyegd")
+script = ExtResource("2_706wc")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Top Snap" type="Area2D" parent="."]
+position = Vector2(0, -62)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top Snap"]
+shape = SubResource("RectangleShape2D_giqqo")
+
+[node name="ColorRect" type="ColorRect" parent="Top Snap"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="Right Snap" type="Area2D" parent="."]
+position = Vector2(62, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Snap"]
+shape = SubResource("RectangleShape2D_giqqo")
+
+[node name="ColorRect" type="ColorRect" parent="Right Snap"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="Bottom Snap" type="Area2D" parent="."]
+position = Vector2(0, 62)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Snap"]
+shape = SubResource("RectangleShape2D_giqqo")
+
+[node name="ColorRect" type="ColorRect" parent="Bottom Snap"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="Left Snap" type="Area2D" parent="."]
+position = Vector2(-62, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Snap"]
+shape = SubResource("RectangleShape2D_giqqo")
+
+[node name="ColorRect" type="ColorRect" parent="Left Snap"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="area_entered" from="Top Snap" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Top Snap" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Right Snap" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Right Snap" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Bottom Snap" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Bottom Snap" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Left Snap" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Left Snap" to="." method="_on_area_2d_area_exited"]

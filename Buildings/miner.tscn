@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://cojegl4yo3xa7"]
+
+[ext_resource type="Script" path="res://snap_script.gd" id="1_4ufgs"]
+[ext_resource type="Texture2D" uid="uid://j5e2vtrj5yva" path="res://Images/Miner_Mk1.webp" id="2_8wgdl"]
+
+[sub_resource type="Gradient" id="Gradient_mut2o"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.967397, 0.748168, 0.16093, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t7be4"]
+gradient = SubResource("Gradient_mut2o")
+width = 60
+height = 140
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_166tx"]
+
+[node name="Miner" type="Sprite2D"]
+texture = SubResource("GradientTexture2D_t7be4")
+script = ExtResource("1_4ufgs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.151367, 0.151367)
+texture = ExtResource("2_8wgdl")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -30.0
+offset_top = -70.0
+offset_right = 30.0
+offset_bottom = 70.0
+
+[node name="Out Snap" type="Area2D" parent="."]
+position = Vector2(0, -70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Out Snap"]
+shape = SubResource("RectangleShape2D_166tx")
+
+[node name="ColorRect" type="ColorRect" parent="Out Snap"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.403922, 0.866667, 0.705882, 1)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="area_entered" from="Out Snap" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Out Snap" to="." method="_on_area_2d_area_exited"]

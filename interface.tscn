@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckcx6w8xkxfjo"]
+
+[ext_resource type="Script" path="res://interface.gd" id="1_wsdco"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu5ln"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4x6k6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8q5r"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wsdco")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 66.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uu5ln")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Section" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/Section"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4x6k6")
+
+[node name="Building" type="Button" parent="PanelContainer/VBoxContainer/Section"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "Buildings"
+
+[node name="Generation" type="Button" parent="PanelContainer/VBoxContainer/Section"]
+layout_mode = 2
+toggle_mode = true
+text = "Generation"
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_o8q5r")
+
+[node name="Building Summon" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/Building Summon"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_o8q5r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/Building Summon"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Smelter" type="Button" parent="PanelContainer/VBoxContainer/Building Summon/VBoxContainer"]
+layout_mode = 2
+text = "Smelter"
+
+[node name="Constructor" type="Button" parent="PanelContainer/VBoxContainer/Building Summon/VBoxContainer"]
+layout_mode = 2
+text = "Constructor"
+
+[node name="Generation Summon" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/Generation Summon"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_o8q5r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/Generation Summon"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Miner" type="Button" parent="PanelContainer/VBoxContainer/Generation Summon/VBoxContainer"]
+layout_mode = 2
+text = "Miner"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Section/Building" to="." method="_on_building_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Section/Generation" to="." method="_on_generation_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Building Summon/VBoxContainer/Smelter" to="." method="_on_smelter_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Building Summon/VBoxContainer/Constructor" to="." method="_on_constructor_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Generation Summon/VBoxContainer/Miner" to="." method="_on_miner_pressed"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://1xjmr32kaq7l"]
+
+[ext_resource type="Script" path="res://snap_script.gd" id="1_1k0jl"]
+[ext_resource type="Texture2D" uid="uid://drhmrkmbxwyg8" path="res://Images/Constructor.webp" id="1_j5onp"]
+
+[sub_resource type="Gradient" id="Gradient_wro62"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.794345, 0.0584592, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ji2kv"]
+gradient = SubResource("Gradient_wro62")
+width = 80
+height = 100
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_giqqo"]
+
+[node name="Constructor" type="Sprite2D"]
+texture = SubResource("GradientTexture2D_ji2kv")
+script = ExtResource("1_1k0jl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.151367, 0.151367)
+texture = ExtResource("1_j5onp")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -40.0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = 50.0
+
+[node name="Out Snap" type="Area2D" parent="."]
+position = Vector2(0, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Out Snap"]
+shape = SubResource("RectangleShape2D_giqqo")
+
+[node name="ColorRect" type="ColorRect" parent="Out Snap"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.403922, 0.866667, 0.705882, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="In Snap" type="Area2D" parent="."]
+position = Vector2(0, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="In Snap"]
+shape = SubResource("RectangleShape2D_giqqo")
+
+[node name="ColorRect" type="ColorRect" parent="In Snap"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.985005, 0.614685, 0.173653, 1)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="area_entered" from="Out Snap" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Out Snap" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="In Snap" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="In Snap" to="." method="_on_area_2d_area_exited"]

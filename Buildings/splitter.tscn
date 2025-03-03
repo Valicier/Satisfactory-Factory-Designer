@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=3 uid="uid://crfjawdbijquw"]
+
+[ext_resource type="Script" path="res://snap_script.gd" id="1_7njx7"]
+[ext_resource type="Texture2D" uid="uid://cuwxvvp5xdw7p" path="res://Images/Conveyor_Splitter.webp" id="2_cb3pc"]
+
+[sub_resource type="Gradient" id="Gradient_xonee"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0.627451, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3jj5c"]
+gradient = SubResource("Gradient_xonee")
+width = 40
+height = 40
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jb0ik"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s803i"]
+
+[node name="Splitter" type="Sprite2D"]
+texture = SubResource("GradientTexture2D_3jj5c")
+script = ExtResource("1_7njx7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_cb3pc")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Out Snap Top" type="Area2D" parent="."]
+position = Vector2(0, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Out Snap Top"]
+shape = SubResource("RectangleShape2D_jb0ik")
+
+[node name="ColorRect" type="ColorRect" parent="Out Snap Top"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.403922, 0.866667, 0.705882, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Out Snap Left" type="Area2D" parent="."]
+position = Vector2(-20, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Out Snap Left"]
+shape = SubResource("RectangleShape2D_jb0ik")
+
+[node name="ColorRect" type="ColorRect" parent="Out Snap Left"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.403922, 0.866667, 0.705882, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Out Snap Right" type="Area2D" parent="."]
+position = Vector2(20, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Out Snap Right"]
+shape = SubResource("RectangleShape2D_jb0ik")
+
+[node name="ColorRect" type="ColorRect" parent="Out Snap Right"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.403922, 0.866667, 0.705882, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="In Snap" type="Area2D" parent="."]
+position = Vector2(0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="In Snap"]
+shape = SubResource("RectangleShape2D_s803i")
+
+[node name="ColorRect" type="ColorRect" parent="In Snap"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.985005, 0.614685, 0.173653, 1)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="area_entered" from="Out Snap Top" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Out Snap Top" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Out Snap Left" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Out Snap Left" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Out Snap Right" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Out Snap Right" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="In Snap" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="In Snap" to="." method="_on_area_2d_area_exited"]
